@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from src.matrix import *
+from src.properties import *
 import unittest
 
 class MatrixPropertiesTest(unittest.TestCase):

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from src.pymatrix import *
+from src.vectors import *
 import unittest
 
 class TestVectorMethods(unittest.TestCase):

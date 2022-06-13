@@ -15,6 +15,7 @@ def cartesian_product(a, b):
 def add_vectors(a, b):
   ret = []
   if not same_length(a, b):
+    print(a, b)
     raise Exception
   for ai, bi in zip(a, b):
     ret.append(ai + bi)
