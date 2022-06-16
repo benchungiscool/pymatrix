@@ -32,3 +32,8 @@ def vector_product(a, b):
       raise Exception
     return [a[i] * b[i] for i in range(len(a))]
 
+def n_tuple_product(a, b):
+  ret = []
+  for ai, bi in zip(a, b):
+    ret.append(ai * bi)
+  return ret

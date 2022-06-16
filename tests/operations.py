@@ -1,13 +1,8 @@
 #!/usr/bin/env python3
 
 from src.operations import *
+from tests.helper import *
 import unittest
-
-def print_matrix(a):
-  print("\n" + "-" * 3, "BEGIN PRINT MATRIX", "-" * 3)
-  for column_vector in a:
-    print(column_vector)
-  print("-" * 3, "END PRINT MATRIX", "-" * 3)
 
 class TestOperations(unittest.TestCase):
   def setUp(self):
@@ -36,6 +31,10 @@ class TestOperations(unittest.TestCase):
       [2, 3],
       [5, 2],
       [4, 4]
+    ]
+    self.first_nxr_matrix = [
+      [5, 2, 11],
+      [6, 7, 1]
     ]
 
   def test_addition(self):
@@ -88,9 +87,64 @@ class TestOperations(unittest.TestCase):
     )
 
   def test_matrix_multiplication(self):
-    c = matrix_multiplication(self.first_nxn_matrix, self.first_nxn_matrix)
-    print_matrix(c)
-    self.assertTrue(True)
+    # these multiplications are not possible
+    first = [
+      [1, -1],
+      [0, 2],
+      [1, 5]
+    ]
+    fails = False
+    try:
+      matrix_multiplication(first, first)
+    except:
+      fails = True
+    self.assertTrue(fails)
+
+    first = [
+      [1, 0, 2],
+      [3, 1, 4],
+      [5, 7, 2]
+    ]
+    second = [
+      [0, 1],
+      [2, 7]
+    ]
+    fails = False
+    try:
+      matrix_multiplication(first, second)
+    except:
+      fails = True
+    self.assertTrue(fails)
+
+    fails = False
+    try:
+      matrix = matrix_multiplication(self.first_mxn_matrix, self.second_mxn_matrix)
+    except:
+      fails = True
+    self.assertTrue(fails)
+
+
+    # these should work
+    matrix = matrix_multiplication(self.first_nxn_matrix, self.first_nxn_matrix)
+    self.assertEqual(
+      matrix,
+      [
+        [319, 461, 537],
+        [417, 172, 111],
+        [294, 1328, 193]
+      ]
+    )
+
+    matrix = matrix_multiplication(self.first_rxn_matrix, self.first_nxr_matrix)
+    self.assertEqual(
+      matrix,
+      [
+        [28, 25, 25],
+        [37, 24, 57],
+        [44, 36, 48]
+      ]
+    )
+    print_matrix(matrix)
 
 
 if __name__ == "__main__":
