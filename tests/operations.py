@@ -194,7 +194,7 @@ class TestOperations(unittest.TestCase):
       [3, 2, 1],
       [6, 5, 3]
     ]
-    print(linear_combination(a, 2))
+    self.assertTrue(linear_combination(a, 2))
 
 if __name__ == "__main__":
   unittest.main()
