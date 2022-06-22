@@ -104,3 +104,9 @@ def determinant(A, total=0):
 
     return total
 
+# returns true if a row is the weighted product of preceding rows
+def linear_combination(a, index):
+  weighted_product = [0 for i in range(len(a[0]))]
+  for i, row in enumerate(a[:index]):
+    weighted_product = add_vectors(scalar_product(row, i+1), weighted_product)
+  return weighted_product == a[index]

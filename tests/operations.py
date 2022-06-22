@@ -188,6 +188,13 @@ class TestOperations(unittest.TestCase):
     self.assertEqual(determinant(m5_matrix), 878372156)
     self.assertEqual(determinant(m4_matrix), -121150)
 
+  def test_linear_combination(self):
+    a = [
+      [0, 1, 1],
+      [3, 2, 1],
+      [6, 5, 3]
+    ]
+    print(linear_combination(a, 2))
 
 if __name__ == "__main__":
   unittest.main()
