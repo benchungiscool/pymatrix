@@ -144,7 +144,49 @@ class TestOperations(unittest.TestCase):
         [44, 36, 48]
       ]
     )
-    print_matrix(matrix)
+
+  def test_2x2_determinant(self):
+    # test that it doesn't work for 3x3 or 4x3
+    fails = False
+    try:
+      matrix = m2_determinant(self.first_nxn_matrix)
+    except:
+      fails = True
+    self.assertTrue(fails)
+
+    fails = False
+    try:
+      matrix = m2_determinant(self.first_mxn_matrix)
+    except:
+      fails = True
+    self.assertTrue(fails)
+
+    self.assertEqual(
+      m2_determinant(
+        [
+          [4, 2],
+          [21, 4]
+        ]
+      ),
+      -26
+    )
+
+  def test_determinant(self):
+    m5_matrix = [
+      [6, 64, 100, 12, 2],
+      [16, 4, 10, 42, 5],
+      [52, 6, 6, 16, 1],
+      [24, 69, 10, 22, 8],
+      [32, 62, 103, 14, 76]
+    ]
+    m4_matrix = [
+      [1,2,3,4],
+      [132, 42, 21, 2],
+      [214, 22, 22, 1],
+      [2, 42, 6, 2]
+    ]
+    self.assertEqual(determinant(m5_matrix), 878372156)
+    self.assertEqual(determinant(m4_matrix), -121150)
 
 
 if __name__ == "__main__":
