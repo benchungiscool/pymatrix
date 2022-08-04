@@ -6,8 +6,6 @@ from src.vectors import *
 from tests.helper import *
 from m4cs.adjugate_matrices import *
 from m4cs.matrix_inversion import *
-from math import sqrt
-
 
 #### ORTHOGONAL MATRICES ####
 
