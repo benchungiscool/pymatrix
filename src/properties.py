@@ -46,6 +46,9 @@ def is_upper_triangular(a):
     above_diagonal.append(row[1+index:])
   return is_null(above_diagonal)
 
+def is_triangular(a):
+	return is_upper_triangular or is_lower_triangular
+
 def is_identity_matrix(a):
   if not is_square(a):
     return False

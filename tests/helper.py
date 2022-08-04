@@ -1,5 +1,8 @@
 # helper functions
 def print_matrix(a):
+  if type(a) != list:
+    print(a)
+    return
   print("\n" + "-" * 3, "BEGIN PRINT MATRIX", "-" * 3)
   for column_vector in a:
     print(column_vector)

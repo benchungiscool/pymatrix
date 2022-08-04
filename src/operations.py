@@ -25,18 +25,32 @@ def matrix_scalar_product(a, scalar):
     c.append([element * scalar for element in vector])
   return c
 
+# returns the identity matrix of a given size m
+def identity_matrix(m):
+  # make an mxm matrix of zeroes
+  ret = [[0] * m] * m
+  # make each item of the diagonal zero
+  for i, row in enumerate(ret):
+    print(row[i])
+  return ret
+
+# transpose matrix
+def matrix_transpose(a):
+  a = deepcopy(a)
+  return [get_ith_row(a, i) for i in range(len(a))]
+
 # matrix multiplication
 def matrix_multiplication(a, b):
-  # matrix dimensions are a = (m * n) where m = len(a) and n = len(a[0])
+ # matrix dimensions are a = (m * n) where m = len(a) and n = len(a[0])
   if not same_length(a[0], b):
-    raise Exception
+    raise Exception("Wrong dimensions")
 
   # define m and k (useful for product matrix)
   m = len(a)
   k = len(b[0])
 
   # get the required calculations
-  rotatedB = [get_ith_row(b, i) for i in range(m)]
+  rotatedB = matrix_transpose(b)
   calculations = []
   for ai in a:
     for bi in rotatedB:
@@ -86,7 +100,7 @@ def determinant(A, total=0):
       raise Exception
 
     if dimensions(A) == (2, 2):
-      return m2_determinant
+      return m2_determinant(A)
 
     if dimensions(A) == (3, 3):
       return m3_determinant(A)
