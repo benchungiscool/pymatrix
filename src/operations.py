@@ -99,6 +99,9 @@ def determinant(A, total=0):
     if not same_length(A[0], A):
       raise Exception
 
+    if dimensions(A) == (1, 1):
+      return A[0]
+
     if dimensions(A) == (2, 2):
       return m2_determinant(A)
 
