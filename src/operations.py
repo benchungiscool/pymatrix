@@ -5,7 +5,7 @@ from src.properties import get_ith_row, get_jth_column
 from tests.helper import *
 from copy import deepcopy
 
-# the same length function in three dimensions
+# the same length function in two dimensions
 def same_dimensions(a, b):
   return same_length(a, b) and same_length(a[0], b[0])
 

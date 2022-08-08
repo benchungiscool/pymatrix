@@ -5,7 +5,7 @@ def empty_matrix(a):
 
 def get_dimensions(a):
   if not len(a):
-    raise Exception
+    return 0, 0
   return len(a), len(a[0])
 
 def is_square(a):

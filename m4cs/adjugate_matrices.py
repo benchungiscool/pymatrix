@@ -4,12 +4,16 @@ from src.operations import *
 from src.properties import *
 from src.vectors import *
 from tests.helper import *
+from copy import deepcopy
 
 #### ADJUGATE MATRICES ####
 
 # return the submatrix, given the lists of rows and columns to be removed
 # if you don't want to remove any rows or cols, just pass an empty list
 def submatrix(a, r, s):
+  # popping deals with the item in memory - make a copy!
+  a = deepcopy(a)
+
   # allow a user to pass ints
   if type(r) == int:
     r = [r]
@@ -17,16 +21,17 @@ def submatrix(a, r, s):
     s = [s]
 
   # reverse sort so indices aren't affected by popping
+  r.sort(reverse=True)
   s.sort(reverse=True)
+
+  # remove each row
+  for target in r:
+    a.pop(target)
 
   # remove each column
   for target in s:
     for i, row in enumerate(a):
       row.pop(target)
-
-  # remove each row
-  for target in r:
-    a.pop(target)
 
   return a
 

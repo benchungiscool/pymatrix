@@ -14,3 +14,4 @@ def is_singular(a):
 
 def is_orthogonal(a):
   return is_identity_matrix(matrix_multiplication(a, matrix_transpose(a)))
+
