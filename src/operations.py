@@ -34,8 +34,14 @@ def identity_matrix(m):
     print(row[i])
   return ret
 
-# transpose matrix
+# returns the A^T of A
 def matrix_transpose(a):
+  # special case if a is one row
+  m, n = dimensions(a)
+  if m == 1:
+    return [[a[0][i]] for i in range(len(a[0]))]
+
+  # otherwise return each column of the matrix
   a = deepcopy(a)
   return [get_ith_row(a, i) for i in range(len(a))]
 
@@ -67,7 +73,10 @@ def matrix_multiplication(a, b):
   # return the new matrix nested k times
   return [ret[i:i + k] for i in range(0, len(ret), k)]
 
+# returns the dimensions in form (m, n)
 def dimensions(a):
+  if not a:
+    return (0, 0)
   return (len(a), len(a[0]))
 
 # find the determinant of a 2*2 matrix (used to find the determinant of larger matrices)
@@ -97,7 +106,7 @@ def m3_determinant(m):
 
 def determinant(A, total=0):
     if not same_length(A[0], A):
-      raise Exception
+      raise Exception("m != n")
 
     if dimensions(A) == (1, 1):
       return A[0]
