@@ -45,11 +45,14 @@ def split_complete_matrix(a):
 # get the hybrid matrix of A_i
 def hybrid_matrix(a, i):
   ret = deepcopy(a)
+
   # take a note of the last item in ret
   b = [i[-1] for i in ret]
+
   # make the replace the ith column with the nth b
   for index, row in enumerate(ret):
     row[i] = b[index]
+
   # remove the exit vals and return
   ret = [i[:-1] for i in ret]
   return ret
@@ -64,6 +67,7 @@ def cramers_system(a):
   for i, item in enumerate(a):
     hybridA = hybrid_matrix(a, i)
     ret.append(determinant(hybridA) / detA)
+
   return ret
 
 if __name__ == "__main__":
