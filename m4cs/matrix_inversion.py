@@ -24,8 +24,6 @@ def inverse_matrix(a):
   # special case for when m=2
   if dimensions(a) == (2,2):
     return m2_inverse_matrix(a)
-  if is_invertible(a):
-    return adjugate_matrix(a)
-  else:
-    raise Exception("Can't invert matrix")
+  if determinant(a) != 0:
+    return matrix_scalar_product(adjugate_matrix(a), 1 / determinant(a))
   
