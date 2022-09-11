@@ -1,9 +1,10 @@
 # helper functions
-def print_matrix(a):
+def print_matrix(a, *args):
   if type(a) != list:
     print(a)
-    return
   print("\n" + "-" * 3, "BEGIN PRINT MATRIX", "-" * 3)
+  for arg in args:
+    print(arg)
   for column_vector in a:
     print(column_vector)
   print("-" * 3, "END PRINT MATRIX", "-" * 3)
